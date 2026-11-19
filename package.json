@@ -1,0 +1,68 @@
+{
+  "name": "w-tools",
+  "version": "1.0.1",
+  "description": "W Tools — студия анимированных эмодзи",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64",
+    "dist": "electron-builder --win nsis",
+    "pack": "electron-builder --dir"
+  },
+  "keywords": [
+    "telegram",
+    "emoji",
+    "stickers",
+    "tgs",
+    "lottie",
+    "editor",
+    "animation"
+  ],
+  "author": "W Tools",
+  "license": "MIT",
+  "dependencies": {
+    "electron-updater": "^6.8.11",
+    "lottie-web": "^5.12.2",
+    "opentype.js": "^1.3.4",
+    "pako": "^2.1.0"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.telegram.emojistudio",
+    "productName": "W Tools",
+    "directories": {
+      "output": "dist-wtools"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "portable": {
+      "artifactName": "${productName}-Portable-${version}.exe"
+    },
+    "asar": true,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "vectoramir27-svg",
+        "repo": "w-tools"
+      }
+    ],
+    "nsis": {
+      "artifactName": "W-Tools-Setup-${version}.${ext}"
+    }
+  }
+}
